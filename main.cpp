@@ -6,7 +6,15 @@ int main()
 
 	if (f.open() && f.mmap())
 	{
-		f.readline();
+		while (!f.eof())
+		{
+			io::string line = f.readline();
+
+			if (f.line_count() % 1000000 == 0) 
+			{
+				std::cout << f.line_count() << '\t' << line << std::endl;
+			}
+		}
 	}
 
 	return 0;
